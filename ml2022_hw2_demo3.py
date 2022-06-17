@@ -116,12 +116,12 @@ def test():
       correct += (predicted == labels).sum().item()
   print(f'Accuracy of the network on the 10000 test images: {100 * correct / total:.2f} %')
 
-total_epoch = 125
+total_epoch = 250
 print_per_iteration = 125
 lr = 0.0001
 grad_clip = 0.1
 
-save_path = './model_ep0'
+save_path = './model.pth'
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=lr, weight_decay=1e-4)
 sched = torch.optim.lr_scheduler.OneCycleLR(optimizer, lr, epochs=total_epoch, steps_per_epoch=len(trainloader))
@@ -146,10 +146,10 @@ for epoch in range(total_epoch):  # loop over the dataset multiple times
         # print statistics
         if (i+1) % print_per_iteration == 0:    # print every 2000 mini-batches
             print(f'[ep {epoch + 1}][{i + 1:5d}/{len(trainloader):5d}] loss: {loss.item():.3f}')
-    save_path = save_path + str(epoch + 1) + '.pth'
+    # save_path = save_path + str(epoch + 1) + '.pth'
     torch.save(model, save_path)
-    save_path = './model_ep0'
-    torch.save(model, save_path)
+    # save_path = './model_ep0'
+    #torch.save(model, save_path)
     test()
 
 # load trained model
