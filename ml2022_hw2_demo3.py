@@ -16,6 +16,9 @@ import torchvision.models as models
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+from torch.backends import cudnn
+
+cudnn.benchmark = True # fast training
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(device)
