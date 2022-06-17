@@ -176,5 +176,4 @@ print(f'Accuracy of the network on the 10000 test images: {100 * correct / total
 # torch.save(model, "./model.pth")
 
 # see size of saved model
-! du -h model.pth
 
