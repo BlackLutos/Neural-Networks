@@ -1,7 +1,11 @@
 # build a CNN to classify the MNIST dataset
 import tensorflow as tf
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = '0'   #指定第一塊GPU可用
+config = tf.ConfigProto()
+config.gpu_options.per_process_gpu_memory_fraction = 0.5  # 程序最多隻能佔用指定gpu50%的顯存
+config.gpu_options.allow_growth = True      #程序按需申請內存
+sess = tf.Session(config = config)
 data = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = data.load_data()
 x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
