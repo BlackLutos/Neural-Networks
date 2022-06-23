@@ -2,7 +2,7 @@
 import tensorflow as tf
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'   #指定第一塊GPU可用
-config = tf.ConfigProto()
+config = tf.compat.v1.ConfigProto
 config.gpu_options.per_process_gpu_memory_fraction = 0.5  # 程序最多隻能佔用指定gpu50%的顯存
 config.gpu_options.allow_growth = True      #程序按需申請內存
 sess = tf.Session(config = config)
