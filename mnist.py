@@ -1,7 +1,7 @@
 # build a CNN to classify the MNIST dataset
 import tensorflow as tf
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = ""
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 data = tf.keras.datasets.mnist
 (x_train, y_train), (x_test, y_test) = data.load_data()
 x_train = x_train.reshape(x_train.shape[0], 28, 28, 1)
